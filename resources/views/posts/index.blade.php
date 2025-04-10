@@ -1,9 +1,9 @@
 <x-layout>
   <section class="py-20 px-5 bg-blue-50">
-    <div class="max-w-[600px] mx-auto">
+    <div class="max-w-[640px] mx-auto">
       <div class=" text-center space-y-4">
         <h1 class="text-5xl font-black text-blue-950 md:text-6xl">Descubra o futuro da tecnologia</h1>
-        <p class="text-lg font-medium text-blue-800">Insights, tutorials, and news from the cutting edge of tech innovation</p>
+        <p class="text-lg font-medium text-blue-800 md:text-xl">Insights, tutorials, and news from the cutting edge of tech innovation</p>
       </div>
   
       <form action="" class="mt-8 mb-16 flex gap-2">
