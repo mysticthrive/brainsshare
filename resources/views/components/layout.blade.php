@@ -17,7 +17,7 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <x-nav-desktop-link href="/home" aria-current="page">Início</x-nav-desktop-link>
+                <x-nav-desktop-link href="/" aria-current="page">Início</x-nav-desktop-link>
                 <x-nav-desktop-link href="#">Mais lidos</x-nav-desktop-link>
                 <x-nav-desktop-link href="#">Projects</x-nav-desktop-link>
                 <x-nav-desktop-link href="#">Calendar</x-nav-desktop-link>
@@ -74,12 +74,10 @@
 
       <div class="md:hidden hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-          <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Início</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Mais lidos</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Projects</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Calendar</a>
+          <x-nav-mobile-link href="/" :active="request()->is('/')">Início</x-nav-mobile-link>
+          <x-nav-mobile-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav-mobile-link>
         </div>
-        <div class="border-t border-gray-700 pt-4 pb-3">
+        <div class="border-t border-gray-300 pt-4 pb-3">
           <div class="flex items-center px-5">
             <div class="shrink-0">
               <img class="size-10 rounded-full" src="https://avatar.iran.liara.run/public/boy" alt="">
@@ -90,9 +88,9 @@
             </div>
           </div>
           <div class="mt-3 space-y-1 px-2">
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Your Profile</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Settings</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-700 hover:text-white">Sign out</a>
+            <x-nav-mobile-link href="#">Perfil</x-nav-mobile-link>
+            <x-nav-mobile-link href="#">Dashboard</x-nav-mobile-link>
+            <x-nav-mobile-link href="#">Sair</x-nav-mobile-link>
           </div>
         </div>
       </div>
