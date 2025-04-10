@@ -17,10 +17,8 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <x-nav-desktop-link href="/" aria-current="page">Início</x-nav-desktop-link>
-                <x-nav-desktop-link href="#">Mais lidos</x-nav-desktop-link>
-                <x-nav-desktop-link href="#">Projects</x-nav-desktop-link>
-                <x-nav-desktop-link href="#">Calendar</x-nav-desktop-link>
+                <x-nav-desktop-link href="/" :active="request()->is('/')">Início</x-nav-desktop-link>
+                <x-nav-desktop-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav-desktop-link>
               </div>
             </div>
           </div>
@@ -77,6 +75,7 @@
           <x-nav-mobile-link href="/" :active="request()->is('/')">Início</x-nav-mobile-link>
           <x-nav-mobile-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav-mobile-link>
         </div>
+
         <div class="border-t border-gray-300 pt-4 pb-3">
           <div class="flex items-center px-5">
             <div class="shrink-0">
