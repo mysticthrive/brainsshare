@@ -17,10 +17,10 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <a href="#" class="px-3 py-2 text-sm font-medium text-gray-700" aria-current="page">Início</a>
-                <a href="#" class="px-3 py-2 text-sm font-medium text-gray-700">Mais lidos</a>
-                <a href="#" class="px-3 py-2 text-sm font-medium text-gray-700">Projects</a>
-                <a href="#" class="px-3 py-2 text-sm font-medium text-gray-700">Calendar</a>
+                <x-nav-desktop-link href="/home" aria-current="page">Início</x-nav-desktop-link>
+                <x-nav-desktop-link href="#">Mais lidos</x-nav-desktop-link>
+                <x-nav-desktop-link href="#">Projects</x-nav-desktop-link>
+                <x-nav-desktop-link href="#">Calendar</x-nav-desktop-link>
               </div>
             </div>
           </div>
