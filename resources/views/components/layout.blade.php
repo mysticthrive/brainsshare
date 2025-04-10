@@ -17,8 +17,8 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <x-nav-desktop-link href="/" :active="request()->is('/')">Início</x-nav-desktop-link>
-                <x-nav-desktop-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav-desktop-link>
+                <x-nav.desktop-link href="/" :active="request()->is('/')">Início</x-nav.desktop-link>
+                <x-nav.desktop-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav.desktop-link>
               </div>
             </div>
           </div>
@@ -72,8 +72,8 @@
 
       <div class="md:hidden hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-          <x-nav-mobile-link href="/" :active="request()->is('/')">Início</x-nav-mobile-link>
-          <x-nav-mobile-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav-mobile-link>
+          <x-nav.mobile-link href="/" :active="request()->is('/')">Início</x-nav.mobile-link>
+          <x-nav.mobile-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav.mobile-link>
         </div>
 
         <div class="border-t border-gray-300 pt-4 pb-3">
@@ -87,9 +87,9 @@
             </div>
           </div>
           <div class="mt-3 space-y-1 px-2">
-            <x-nav-mobile-link href="#">Perfil</x-nav-mobile-link>
-            <x-nav-mobile-link href="#">Dashboard</x-nav-mobile-link>
-            <x-nav-mobile-link href="#">Sair</x-nav-mobile-link>
+            <x-nav.mobile-link href="#">Perfil</x-nav.mobile-link>
+            <x-nav.mobile-link href="#">Dashboard</x-nav.mobile-link>
+            <x-nav.mobile-link href="#">Sair</x-nav.mobile-link>
           </div>
         </div>
       </div>
