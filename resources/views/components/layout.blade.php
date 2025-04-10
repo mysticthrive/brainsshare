@@ -23,65 +23,12 @@
             </div>
           </div>
 
-          <div class="hidden md:block">
-            <div class="ml-4 flex items-center md:ml-6">
-              <div class="relative ml-3 group">
-                <div>
-                  <button
-                    type="button"
-                    class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
-                    id="user-menu-button"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    <span class="absolute -inset-1.5"></span>
-                    <span class="sr-only">Open user menu</span>
-                    <img class="size-8 rounded-full" src="https://avatar.iran.liara.run/public/boy" alt="">
-                  </button>
-                </div>
-          
-                <div
-                  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none opacity-0 invisible transition-opacity duration-600 group-hover:opacity-100 group-hover:visible"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="user-menu-button"
-                  tabindex="-1"
-                >
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sair</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <x-nav.user-dropdown/>
           <x-nav.mobile-button/>
         </div>
       </div>
 
-      <div class="md:hidden hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-          <x-nav.mobile-link href="/" :active="request()->is('/')">Início</x-nav.mobile-link>
-          <x-nav.mobile-link href="/popular" :active="request()->is('popular')">Mais lidos</x-nav.mobile-link>
-        </div>
-
-        <div class="border-t border-gray-300 pt-4 pb-3">
-          <div class="flex items-center px-5">
-            <div class="shrink-0">
-              <img class="size-10 rounded-full" src="https://avatar.iran.liara.run/public/boy" alt="">
-            </div>
-            <div class="ml-3">
-              <div class="text-base/5 font-medium text-gray-900">Evandro</div>
-              <div class="text-sm font-medium text-gray-500">evandro@example.com</div>
-            </div>
-          </div>
-          <div class="mt-3 space-y-1 px-2">
-            <x-nav.mobile-link href="#">Perfil</x-nav.mobile-link>
-            <x-nav.mobile-link href="#">Dashboard</x-nav.mobile-link>
-            <x-nav.mobile-link href="#">Sair</x-nav.mobile-link>
-          </div>
-        </div>
-      </div>
+      <x-nav.mobile-menu/>
     </nav>
   </div>
 
