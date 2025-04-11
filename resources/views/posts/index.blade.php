@@ -29,10 +29,23 @@
       </form>
   
       <div class="flex item-center flex-wrap justify-center gap-2">
-        <span class="px-4 py-2 border border-blue-100 rounded-3xl text-sm font-medium text-blue-600 bg-white">Mais de 1.000 artigos</span>
-        <span class="px-4 py-2 border border-blue-100 rounded-3xl text-sm font-medium text-blue-600 bg-white">Atualizado diariamente</span>
-        <span class="px-4 py-2 border border-blue-100 rounded-3xl text-sm font-medium text-blue-600 bg-white">Especialistas</span>
+        <x-ui.badge variant="secondary">Mais de 1.000 artigos</x-ui.badge>
+        <x-ui.badge variant="secondary">Atualizado diariamente</x-ui.badge>
+        <x-ui.badge variant="secondary">Especialistas</x-ui.badge>
       </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+    <h2 class="mb-8 text-3xl font-bold">Trending topics</h2>
+
+    <div class="flex item-center flex-wrap gap-3">
+      <x-ui.badge href="#">Inteligencia artificial (48)</x-ui.badge>
+      <x-ui.badge href="#">Desenvolvimento web (19)</x-ui.badge>
+      <x-ui.badge href="#">Segurança (30)</x-ui.badge>
+      <x-ui.badge href="#">Cloud (27)</x-ui.badge>
+      <x-ui.badge href="#">Ciencia de dados (18)</x-ui.badge>
+      <x-ui.badge href="#">UX/UI Design (18)</x-ui.badge>
     </div>
   </section>
 </x-layout>
