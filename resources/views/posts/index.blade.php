@@ -48,4 +48,20 @@
       <x-ui.badge href="#">UX/UI Design (18)</x-ui.badge>
     </div>
   </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+    <div class="mb-8 flex items-center justify-between">
+      <h2 class="text-3xl font-bold">Artigos recentes</h2>
+      <a href="" class="text-sm font-medium text-gray-700">Ver todos →</a>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <x-blog.post.card/>
+      <x-blog.post.card/>
+      <x-blog.post.card/>
+      <x-blog.post.card/>
+      <x-blog.post.card/>
+      <x-blog.post.card/>
+    </div>
+  </section>
 </x-layout>
