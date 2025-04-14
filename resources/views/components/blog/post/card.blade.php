@@ -5,7 +5,7 @@
   <div class="p-6 space-y-8">
     <div class="space-y-2">
       <x-ui.badge href="#" small>Web dev</x-ui.badge>
-      <h3 class="text-lg font-bold">Building Scalable Web Applications with Next.js</h3>
+      <h3 class="text-lg font-bold text-gray-900">Building Scalable Web Applications with Next.js</h3>
       <p class="text-gray-600">Learn how to leverage Next.js features to build performant and scalable web</p>
     </div>
     <div class="text-sm font-medium text-gray-600 items-center gap-2">

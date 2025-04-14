@@ -64,4 +64,17 @@
       <x-blog.post.card/>
     </div>
   </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+    <div class="mb-8 flex items-center justify-between">
+      <h2 class="text-3xl font-bold">Mais lidos da semana</h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      <x-blog.post.list-item/>
+      <x-blog.post.list-item/>
+      <x-blog.post.list-item/>
+      <x-blog.post.list-item/>
+    </div>
+  </section>
 </x-layout>
