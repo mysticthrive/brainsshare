@@ -90,4 +90,17 @@
       <x-blog.post.card compact/>
     </div>
   </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+    <div class="mb-8 flex items-center justify-between gap-4">
+      <h2 class="text-3xl font-bold">Noticias de tecnologia</h2>
+      <a href="" class="text-sm font-medium text-blue-600 shrink-0">Mais noticias →</a>
+    </div>
+
+    <div class="grid gap-6">
+      <x-blog.post.card-outline/>
+      <x-blog.post.card-outline/>
+      <x-blog.post.card-outline/>
+    </div>
+  </section>
 </x-layout>
