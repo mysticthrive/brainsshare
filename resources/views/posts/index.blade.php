@@ -98,9 +98,21 @@
     </div>
 
     <div class="grid gap-6">
-      <x-blog.post.card-outline/>
-      <x-blog.post.card-outline/>
-      <x-blog.post.card-outline/>
+      <x-blog.news.card/>
+      <x-blog.news.card/>
+      <x-blog.news.card/>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+    <div class="mb-8 flex items-center justify-between gap-4">
+      <h2 class="text-3xl font-bold">Recursos gratuitos</h2>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      <x-blog.resource.card/>
+      <x-blog.resource.card/>
+      <x-blog.resource.card/>
     </div>
   </section>
 </x-layout>
