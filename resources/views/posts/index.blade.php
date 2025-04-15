@@ -29,9 +29,9 @@
       </form>
   
       <div class="flex item-center flex-wrap justify-center gap-2">
-        <x-ui.badge variant="secondary">Mais de 1.000 artigos</x-ui.badge>
-        <x-ui.badge variant="secondary">Atualizado diariamente</x-ui.badge>
-        <x-ui.badge variant="secondary">Especialistas</x-ui.badge>
+        <x-ui.badge variant="white">Mais de 1.000 artigos</x-ui.badge>
+        <x-ui.badge variant="white">Atualizado diariamente</x-ui.badge>
+        <x-ui.badge variant="white">Especialistas</x-ui.badge>
       </div>
     </div>
   </section>
@@ -65,7 +65,7 @@
     </div>
   </section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
     <div class="mb-8 flex items-center justify-between">
       <h2 class="text-3xl font-bold">Mais lidos da semana</h2>
     </div>
@@ -75,6 +75,19 @@
       <x-blog.post.list-item/>
       <x-blog.post.list-item/>
       <x-blog.post.list-item/>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+    <div class="mb-8 flex items-center justify-between gap-4">
+      <h2 class="text-3xl font-bold">Escolha do editor</h2>
+      <x-ui.badge variant="blue" small>Conteúdo selecionado</x-ui.badge>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      <x-blog.post.card compact/>
+      <x-blog.post.card compact/>
+      <x-blog.post.card compact/>
     </div>
   </section>
 </x-layout>
