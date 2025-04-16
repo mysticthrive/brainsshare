@@ -13,6 +13,8 @@
     {{ $slot }}
   </main>
 
+  <x-footer/>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
     const menuButton = document.querySelector('#menu-button');

@@ -115,4 +115,22 @@
       <x-blog.resource.card/>
     </div>
   </section>
+
+  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+    <div class="p-10 rounded-xl text-center bg-blue-50">
+      <div class="max-w-xl mx-auto">
+        <div class="space-y-4">
+          <h2 class="text-3xl font-black text-blue-900">Fique por dentro</h2>
+          <p class="text-blue-800">Get the latest articles, tutorials, and tech news delivered straight to your inbox.</p>
+        </div>
+
+        <form action="" class="mt-8 mb-4 flex flex-col gap-3 md:flex-row">
+          <input type="text" class="w-full py-2 px-3 rounded border text-sm font-medium border-blue-200 bg-white" placeholder="Digite seu email">
+          <button class="w-full py-2 px-5 rounded text-sm font-bold text-white bg-blue-600 sm:w-auto">Inscrever</button>
+        </form>
+
+        <p class="text-xs text-blue-600">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+      </div>
+    </div>
+  </section>
 </x-layout>
