@@ -81,7 +81,6 @@
   <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
     <x-section-heading link="#">Recursos gratuitos</x-section-heading>
 
-
     <div class="grid gap-6 md:grid-cols-3">
       <x-blog.resource.card/>
       <x-blog.resource.card/>
