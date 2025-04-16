@@ -1,17 +1,15 @@
 <x-layout>
   <section class="py-20 px-5 bg-blue-50">
     <div class="max-w-[640px] mx-auto">
-      <div class=" text-center space-y-4">
+      <div class="text-center space-y-4">
         <h1 class="text-5xl font-black text-blue-950 md:text-6xl">Descubra o futuro da tecnologia</h1>
-        <p class="text-lg font-medium text-blue-800 md:text-xl">Insights, tutorials, and news from the cutting edge of tech innovation</p>
+        <p class="text-lg font-medium text-blue-800 md:text-xl">
+          Insights, tutorials, and news from the cutting edge of tech innovation
+        </p>
       </div>
   
       <form action="" class="mt-8 mb-16 flex gap-2">
-        <div class="relative flex-1">
-          <img src="{{ asset('images/icons/search.svg') }}" class="absolute w-5 h-5 text-blue-400 transform -translate-y-1/2 left-3 top-1/2" alt="">
-          <x-ui.forms.input name="search" placeholder="Procure artigos, topicos, ou autores..." icon/>
-        </div>
-  
+        <x-ui.forms.input name="search" placeholder="Procure artigos, topicos, ou autores..." icon="search"/>
         <x-ui.forms.button>Buscar</x-ui.forms.button>
       </form>
   

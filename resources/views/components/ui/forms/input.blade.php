@@ -13,4 +13,6 @@
     ]
 @endphp
 
-<input {{ $attributes($defaults) }}/>
+<x-ui.forms.field :$icon>
+  <input {{ $attributes($defaults) }}/>
+</x-ui.forms.field>
