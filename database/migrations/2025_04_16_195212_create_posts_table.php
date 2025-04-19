@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('content');
             $table->boolean('published')->default(false);
+            $table->unsignedBigInteger('views')->default(0);
             $table->string('image');
             $table->timestamps();
         });
