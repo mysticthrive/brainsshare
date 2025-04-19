@@ -38,12 +38,9 @@
     <x-section-heading link="#">Artigos recentes</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <x-blog.post.card/>
-      <x-blog.post.card/>
-      <x-blog.post.card/>
-      <x-blog.post.card/>
-      <x-blog.post.card/>
-      <x-blog.post.card/>
+      @foreach ($recentPosts as $post)
+        <x-blog.post.card :$post/>
+      @endforeach
     </div>
   </section>
 
@@ -51,10 +48,9 @@
     <x-section-heading>Mais lidos da semana</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2">
-      <x-blog.post.list-item/>
-      <x-blog.post.list-item/>
-      <x-blog.post.list-item/>
-      <x-blog.post.list-item/>
+      @foreach ($mostReadPosts as $post)
+        <x-blog.post.list-item :$post/>
+      @endforeach
     </div>
   </section>
 
@@ -62,9 +58,9 @@
     <x-section-heading link="#">Escolha do editor</x-section-heading>
 
     <div class="grid gap-6 md:grid-cols-3">
-      <x-blog.post.card compact/>
-      <x-blog.post.card compact/>
-      <x-blog.post.card compact/>
+      @foreach ($recentPosts as $post)
+        <x-blog.post.card compact :$post/>
+      @endforeach
     </div>
   </section>
 

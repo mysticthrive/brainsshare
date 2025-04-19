@@ -1,7 +1,7 @@
-@props(['compact' => false])
+@props(['compact' => false, 'post'])
 
 <div class="rounded-lg border border-gray-100 overflow-hidden">
-  <x-blog.post.thumbnail :badge="$compact"/>
+  <x-blog.post.thumbnail :badge="$compact" link="{{ $post->image }}"/>
 
   <div class="p-6 space-y-8">
  
@@ -9,8 +9,8 @@
       @unless ($compact)
         <x-ui.badge href="#" small>Web dev</x-ui.badge>
       @endunless
-      <h3 class="text-lg font-bold text-gray-900 hover:text-blue-600 transition-colors duration-300">Building Scalable Web Applications with Next.js</h3>
-      <p class="text-gray-600">Learn how to leverage Next.js features to build performant and scalable web</p>
+      <h3 class="text-lg font-bold line-clamp-2 text-gray-900 hover:text-blue-600 transition-colors duration-300">{{ $post->title }}</h3>
+      <p class="text-gray-600 line-clamp-2">Learn how to leverage Next.js features to build performant and scalable web</p>
       @if ($compact)
         <span class="text-sm font-medium text-blue-600">by Evandro Mateus</span>
       @endif

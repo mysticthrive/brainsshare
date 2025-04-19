@@ -1,7 +1,7 @@
-@props(['size' => 'base', 'badge' => null])
+@props(['size' => 'base', 'badge' => null, 'link'])
 
 @php
-  $classes = 'bg-gray-200 shrink-0 relative';
+  $classes = 'shrink-0 relative';
 
   if($size == 'base'){
     $classes .= ' h-48';
@@ -13,7 +13,7 @@
 @endphp
 
 <div {{ $attributes(['class' => $classes]) }}>
-  <img src="" alt="" class="object-cover">
+  <img src="{{ $link }}" alt="" class="w-full h-full object-cover">
   @if ($badge)
     <x-ui.badge href="#" class="absolute top-6 left-6" small variant="blue">Webdev</x-ui.badge>
   @endif
