@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
-    use HasFactory;
+  /** @use HasFactory<\Database\Factories\PostFactory> */
+  use HasFactory;
+
+  public function User(){
+    return $this->belongsTo(User::class);
+  }
 }
