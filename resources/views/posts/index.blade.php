@@ -25,12 +25,9 @@
     <x-section-heading>Trending Topics</x-section-heading>
 
     <div class="flex item-center flex-wrap gap-3">
-      <x-ui.badge href="#">Inteligencia artificial (48)</x-ui.badge>
-      <x-ui.badge href="#">Desenvolvimento web (19)</x-ui.badge>
-      <x-ui.badge href="#">Segurança (30)</x-ui.badge>
-      <x-ui.badge href="#">Cloud (27)</x-ui.badge>
-      <x-ui.badge href="#">Ciencia de dados (18)</x-ui.badge>
-      <x-ui.badge href="#">UX/UI Design (18)</x-ui.badge>
+      @foreach ($tags as $tag)
+        <x-ui.badge href="/tags/{{ strtolower($tag->name) }}">{{ $tag->name }}</x-ui.badge> 
+      @endforeach
     </div>
   </section>
 
@@ -48,8 +45,8 @@
     <x-section-heading>Mais lidos da semana</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2">
-      @foreach ($mostReadPosts as $post)
-        <x-blog.post.list-item :$post/>
+      @foreach ($mostReadPosts as $index => $post)
+        <x-blog.post.list-item :$post :$index/>
       @endforeach
     </div>
   </section>
