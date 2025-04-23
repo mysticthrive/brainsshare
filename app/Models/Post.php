@@ -17,6 +17,17 @@ class Post extends Model
     return $this->belongsTo(User::class);
   }
 
+  public function tag(string $name): void
+  {
+    $cleanName = trim($name);
+    if (empty($cleanName)) {
+      return;
+    }
+
+    $tag = Tag::firstOrCreate(['name' => $cleanName]);
+    $this->tags()->attach($tag);
+  }
+
   public function Tags(): BelongsToMany
   {
     return $this->belongsToMany(Tag::class);
