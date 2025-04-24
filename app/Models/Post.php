@@ -12,9 +12,14 @@ class Post extends Model
   /** @use HasFactory<\Database\Factories\PostFactory> */
   use HasFactory;
 
-  public function User(): BelongsTo
+  public function user(): BelongsTo
   {
     return $this->belongsTo(User::class);
+  }
+
+  public function category(): BelongsTo
+  {
+    return $this->belongsTo(Category::class);
   }
 
   public function tag(string $name): void
@@ -28,7 +33,7 @@ class Post extends Model
     $this->tags()->attach($tag);
   }
 
-  public function Tags(): BelongsToMany
+  public function tags(): BelongsToMany
   {
     return $this->belongsToMany(Tag::class);
   }
