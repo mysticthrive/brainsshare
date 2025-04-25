@@ -28,7 +28,7 @@ class PostFactory extends Factory
       'excerpt' => fake()->paragraph(2),
       'content' => fake()->text(2000),
       'views' => rand(0, 2000),
-      'image' => 'https://picsum.photos/500/300'
+      'image' => 'https://picsum.photos/900/500'
     ];
   }
 }

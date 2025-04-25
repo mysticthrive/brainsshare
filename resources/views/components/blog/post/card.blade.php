@@ -8,10 +8,12 @@
     <div class="space-y-2">
       @unless ($compact)
         @foreach ($post->tags as $tag)
-          <x-ui.badge href="#" small>{{ $tag->name }}</x-ui.badge>
+          <x-ui.badge href="/tags/{{ $tag->name }}" small>{{ $tag->name }}</x-ui.badge>
         @endforeach
       @endunless
-      <h3 class="text-lg font-bold line-clamp-2 text-gray-900 hover:text-blue-600 transition-colors duration-300">{{ $post->title }}</h3>
+      <h3 class="text-lg font-bold line-clamp-2 text-gray-900 hover:text-blue-600 transition-colors duration-300">
+        <a href="/posts/{{ $post->slug }}">{{ $post->title }}</a>
+      </h3>
       <p class="text-gray-600 line-clamp-2">{{ $post->excerpt }}</p>
       @if ($compact)
         <span class="text-sm font-medium text-blue-600">by {{ $post->user->name }}</span>
