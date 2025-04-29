@@ -9,7 +9,7 @@
       </div>
   
       <form action="" class="mt-8 mb-16 flex gap-2">
-        <x-ui.forms.input name="search" placeholder="Procure artigos, topicos, ou autores..." icon="search"/>
+        <x-ui.forms.input name="search" placeholder="Procure artigos, topicos, ou autores..." variant="blue" icon="search"/>
         <x-ui.forms.button>Buscar</x-ui.forms.button>
       </form>
   
@@ -90,7 +90,7 @@
         </div>
 
         <form action="" class="mt-8 mb-4 flex flex-col gap-3 md:flex-row">
-          <x-ui.forms.input name="email" placeholder="Digite seu email"/>
+          <x-ui.forms.input name="email" placeholder="Digite seu email" variant="blue"/>
           <x-ui.forms.button>Inscrever</x-ui.forms.button>
         </form>
 
