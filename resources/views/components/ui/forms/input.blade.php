@@ -5,11 +5,12 @@
   'variant' => 'default',
   'type' => 'text',
   'id' => $name,
-  'as' => 'input'
+  'as' => 'input',
+  'tip' => null
 ])
 
 @php
-  $baseClasses = 'w-full px-3 py-3 border rounded-md outline-none bg-white transition-colors';
+  $baseClasses = 'w-full p-3 border rounded-md outline-none bg-white transition-colors block';
 
   $variantClasses = [
     'default' => 'border-gray-300 focus:border-gray-500 focus:ring-1 focus:ring-gray-500',
@@ -29,11 +30,13 @@
   :$icon 
   :$label 
   :$name
+  :$tip
 >
   @if ($as === 'textarea')
     <textarea 
       id="{{ $id }}"
       name="{{ $name }}"
+      rows="4"
       {{ $attributes->merge(['class' => $inputClasses]) }}></textarea>
   @else
     <input 
