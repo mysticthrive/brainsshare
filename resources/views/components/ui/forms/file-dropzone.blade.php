@@ -27,4 +27,6 @@
     id="{{ $id }}" 
     {{ $attributes->merge(['class' => 'hidden']) }}
   >
+
+  <x-ui.forms.error class="mt-2" :error="$errors->first($name)"/>
 </div>

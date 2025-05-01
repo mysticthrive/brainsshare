@@ -5,6 +5,7 @@
   'name' => $name,
   'options' => [],
   'selected' => null,
+  'placeholder'
 ])
 
 @php
@@ -20,6 +21,10 @@
     id="{{ $id }}"
     {{ $attributes->merge(['class' => $classes]) }}
   >
+    <option value="" disabled hidden {{ $selected === null ? 'selected' : '' }}>
+      {{ $placeholder }}
+    </option>
+
     @foreach ($options as $option)
       <option value="{{ $option->id }}">{{ $option->name }}</option>
     @endforeach
