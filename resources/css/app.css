@@ -1,6 +1,19 @@
 @import 'tailwindcss';
 
 @theme {
-  /* --font-hanken-grotesk: Hanken Grotesk, sans-serif; */
   --text-2xs: .625rem;
+}
+
+.tox-tinymce {
+  border: 1px solid #d1d5dc !important;
+}
+
+.tox-editor-header{
+  border-bottom: 1px solid #d1d5dc !important;
+  box-shadow: none !important;
+}
+
+.tox-statusbar{
+  height: auto !important;
+  padding: 6px 14px !important;
 }
