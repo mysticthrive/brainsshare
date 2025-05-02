@@ -6,6 +6,7 @@
     </div>
 
     <form action="/posts" method="POST" enctype="multipart/form-data" class="space-y-8">
+      @csrf
       <div class="flex flex-col gap-6 md:flex-row">
         <div class="space-y-6 flex-1">
           <x-ui.forms.input name="title" label="Titulo" placeholder="O que esperar da tecnologia em..."/>
@@ -17,7 +18,7 @@
             tip="Um pequeno resumo que é exibido no card do post (opcional)"
           />
 
-          <x-ui.forms.select name="category" label="Categoria" :options="$categories"/>
+          <x-ui.forms.select name="category" label="Categoria" :options="$categories" placeholder="Selecione a categoria"/>
 
           <x-ui.forms.input 
             name="tags"
@@ -29,10 +30,7 @@
         </div>
   
         <div class="flex-1 space-y-6">
-          <div>
-            <label class="mb-2 font-medium inline-block" for="content">Conteúdo</label>
-            <textarea id="content" name="content"></textarea>
-          </div>
+          <x-ui.forms.input name="content" label="Conteúdo" as="textarea"/>
           
           <div class="space-y-4">
             <x-ui.forms.checkbox 

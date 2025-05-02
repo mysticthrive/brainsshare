@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
 
 class PostController extends Controller
 {
@@ -32,5 +33,18 @@ class PostController extends Controller
   {
     $categories = Category::all();
     return view('posts.create', compact('categories'));
+  }
+
+  public function store(Request $request){
+    $attributes = $request->validate([
+      'title' => ['required'],
+      'excerpt' => ['nullable'],
+      'category' => ['required'],
+      'tags' => ['string', 'regex:/^[a-zA-Z0-9áéíóúãõâêôçÁÉÍÓÚÃÕÂÊÔÇ\-\s,]+$/'],
+      'image' => ['required', File::types(['jpg', 'webp'])],
+      'content' => ['required']
+    ]);
+    
+    $attributes['published'] = $request->has('published');
   }
 }
