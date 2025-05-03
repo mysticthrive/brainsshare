@@ -6,6 +6,7 @@
     </div>
 
     <form action="/register" method="POST" class="space-y-8">
+      @csrf
       <div class="space-y-6">
         <x-ui.forms.input name="name" label="Nome" placeholder="John Doe"/>
         <x-ui.forms.input type="email" name="email" label="Email" placeholder="johndoe@email.com"/>
