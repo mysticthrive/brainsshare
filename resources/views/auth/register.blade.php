@@ -2,7 +2,7 @@
   <section class="max-w-[800px] mx-auto py-8 px-5 md:py-14 lg:py-20">
     <div class="mb-12 space-y-2">
       <h1 class="text-3xl font-black text-gray-900 md:text-4xl lg:text-5xl">Criar conta</h1>
-      <p class="text-gray-600">Preencha os campos abaixo para publicar um novo post.</p>
+      <p class="text-gray-600">Preencha os campos abaixo para criar sua conta.</p>
     </div>
 
     <form action="/register" method="POST" class="space-y-8">
