@@ -14,7 +14,17 @@
           </div>
         </div>
 
-        <x-nav.user-dropdown/>
+        @auth
+          <x-nav.user-dropdown/>
+        @endauth
+
+        @guest
+          <div class="flex items-center gap-2">
+            <x-ui.forms.button href="/login">Entrar</x-ui.forms.button>
+            <x-ui.forms.button href="/register" outline>Criar conta</x-ui.forms.button>
+          </div>
+        @endguest
+
         <x-nav.mobile-button/>
       </div>
     </div>

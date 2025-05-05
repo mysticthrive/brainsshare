@@ -5,7 +5,7 @@
   'tip' => null
 ])
 
-<div class="relative">
+<div class="relative flex-1">
   @if ($label)
     <x-ui.forms.label :$name :$label/>
   @endif
