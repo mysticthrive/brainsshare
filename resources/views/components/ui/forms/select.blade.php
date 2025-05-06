@@ -2,7 +2,6 @@
   'label',
   'name',
   'id' => $name,
-  'name' => $name,
   'options' => [],
   'selected' => null,
   'placeholder'
