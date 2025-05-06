@@ -37,4 +37,15 @@ class Post extends Model
   {
     return $this->belongsToMany(Tag::class);
   }
+
+  public function addTags(?string $tagsSubmmited)
+  {
+    if ($tagsSubmmited) {
+      $tags = array_map('trim', explode(',', $tagsSubmmited));
+
+      foreach ($tags as $tag) {
+        $this->tag($tag);
+      }
+    }
+  }
 }

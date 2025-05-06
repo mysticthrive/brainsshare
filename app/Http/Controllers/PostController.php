@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\File;
 
 class PostController extends Controller
@@ -39,12 +42,19 @@ class PostController extends Controller
     $attributes = $request->validate([
       'title' => ['required'],
       'excerpt' => ['nullable'],
-      'category' => ['required'],
+      'category_id' => ['required'],
       'tags' => ['string', 'regex:/^[a-zA-Z0-9áéíóúãõâêôçÁÉÍÓÚÃÕÂÊÔÇ\-\s,]+$/'],
-      'image' => ['required', File::types(['jpg', 'webp'])],
+      'image' => ['required', 'image', File::types(['jpg', 'webp'])],
       'content' => ['required']
     ]);
-    
+
+    $attributes['slug'] = Str::slug($attributes['title']);
     $attributes['published'] = $request->has('published');
+    $attributes['image'] = $request->image->store('posts');
+
+    $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
+    $post->addTags($request->tags);
+
+    return redirect('/');
   }
 }

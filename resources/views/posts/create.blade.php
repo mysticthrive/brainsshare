@@ -18,7 +18,7 @@
             tip="Um pequeno resumo que é exibido no card do post (opcional)"
           />
 
-          <x-ui.forms.select name="category" label="Categoria" :options="$categories" placeholder="Selecione a categoria"/>
+          <x-ui.forms.select name="category_id" label="Categoria" :options="$categories" placeholder="Selecione a categoria"/>
 
           <x-ui.forms.input 
             name="tags"
