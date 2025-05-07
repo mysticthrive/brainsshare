@@ -16,7 +16,7 @@
     type="{{ $type }}"
     id="{{ $id }}"
     name="{{ $name }}"
-    @checked($checked)
+    @checked(old($name, $checked))
   >
   <x-ui.forms.label :$label :$name class="mb-0! ml-1"/>
 </x-ui.forms.field>

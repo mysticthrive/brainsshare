@@ -25,7 +25,12 @@
     </option>
 
     @foreach ($options as $option)
-      <option value="{{ $option->id }}">{{ $option->name }}</option>
+      <option 
+        value="{{ $option->id }}"
+        {{ old($name, $selected) == $option->id ? 'selected' : '' }}
+      >
+        {{ $option->name }}
+      </option>
     @endforeach
   </select>
 </x-ui.forms.field>

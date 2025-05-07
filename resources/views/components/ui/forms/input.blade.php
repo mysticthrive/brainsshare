@@ -1,11 +1,12 @@
 @props([
   'label' => false,
-  'icon' => false,
   'name',
-  'variant' => 'default',
   'type' => 'text',
   'id' => $name,
+  'value' => old($name),
   'as' => 'input',
+  'variant' => 'default',
+  'icon' => false,
   'tip' => null
 ])
 
@@ -37,12 +38,15 @@
       id="{{ $id }}"
       name="{{ $name }}"
       rows="4"
-      {{ $attributes->merge(['class' => $inputClasses]) }}></textarea>
+      {{ $attributes->merge(['class' => $inputClasses]) }}
+    >{{ $value }}</textarea>
   @else
     <input 
       type="{{ $type }}"
       id="{{ $id }}"
       name="{{ $name }}"
-      {{ $attributes->merge(['class' => $inputClasses]) }} />
+      value="{{ $value }}"
+      {{ $attributes->merge(['class' => $inputClasses]) }} 
+    />
   @endif
 </x-ui.forms.field>
