@@ -1,9 +1,6 @@
 <x-layout>
   <section class="max-w-[800px] mx-auto py-8 px-5 md:py-14 lg:py-20">
-    <div class="mb-12 space-y-2">
-      <h1 class="text-3xl font-black text-gray-900 md:text-4xl lg:text-5xl">Criar conta</h1>
-      <p class="text-gray-600">Preencha os campos abaixo para criar sua conta.</p>
-    </div>
+    <x-page-heading title="Criar conta" subtitle="Preencha os campos abaixo para criar sua conta."/>
 
     <form action="/register" method="POST" class="space-y-8">
       @csrf
