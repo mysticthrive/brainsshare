@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\File;
 
 class PostController extends Controller
 {
@@ -38,19 +37,19 @@ class PostController extends Controller
     return view('posts.create', compact('categories'));
   }
 
-  public function store(Request $request){
-    $attributes = $request->validate([
-      'title' => ['required'],
-      'excerpt' => ['nullable'],
-      'category_id' => ['required'],
-      'tags' => ['string', 'regex:/^[a-zA-Z0-9áéíóúãõâêôçÁÉÍÓÚÃÕÂÊÔÇ\-\s,]+$/'],
-      'image' => ['required', 'image', File::types(['jpg', 'webp'])],
-      'content' => ['required']
-    ]);
+  /**
+    * @param \Illuminate\Http\Request $request
+  */
+  public function store(PostRequest $request){
+    $attributes = $request->validated();
 
     $attributes['slug'] = Str::slug($attributes['title']);
     $attributes['published'] = $request->has('published');
     $attributes['image'] = $request->image->store('posts');
+
+    if (empty($attributes['excerpt'])) {
+      $attributes['excerpt'] = Str::limit(strip_tags($attributes['content']), 150);
+    }
 
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
     $post->addTags($request->tags);
