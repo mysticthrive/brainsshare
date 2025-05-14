@@ -128,7 +128,68 @@
             </div>
           </x-ui.panel>
         </div>
-        <div x-show="tab === 'posts'">Conteúdo da aba Posts</div>
+        <div x-show="tab === 'posts'">
+          <x-ui.panel>
+            <div class="space-y-1 mb-6">
+              <h3 class="text-2xl font-bold text-gray-900">Atividades recentes</h3>
+              <p class="text-sm text-gray-700">Sua ultimas atividades no blog</p>
+            </div>
+            <div class="rounded border border-gray-200 overflow-x-auto">
+
+              <div class="min-w-[600px] w-full p-3 text-sm font-bold grid grid-cols-4 gap-4 border-b border-gray-200 items-center whitespace-nowrap">
+                <div class="col-span-2 text-gray-500">Nome</div>
+                <div class="text-gray-500">Status</div>
+                <div class="text-right text-gray-500">Ações</div>
+              </div>
+
+              <div class="min-w-[600px] w-full py-5 px-3 text-sm grid grid-cols-4 gap-4 border-b border-gray-100 items-center whitespace-nowrap">
+                <p class="text-sm font-medium truncate whitespace-nowrap overflow-hidden col-span-2 text-gray-900">
+                  O futuro da IA no desenvolvimento de software
+                </p>
+                <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                <div class="text-right flex justify-end gap-4">
+                  <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                  <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                </div>
+              </div>
+
+              <div class="min-w-[600px] w-full py-5 px-3 text-sm grid grid-cols-4 gap-4 border-b border-gray-100 items-center whitespace-nowrap">
+                <p class="text-sm font-medium truncate whitespace-nowrap overflow-hidden col-span-2 text-gray-900">
+                  O futuro da IA no desenvolvimento de software
+                </p>
+                <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                <div class="text-right flex justify-end gap-4">
+                  <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                  <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                </div>
+              </div>
+
+              <div class="min-w-[600px] w-full py-5 px-3 text-sm grid grid-cols-4 gap-4 border-b border-gray-100 items-center whitespace-nowrap">
+                <p class="text-sm font-medium truncate whitespace-nowrap overflow-hidden col-span-2 text-gray-900">
+                  O futuro da IA no desenvolvimento de software
+                </p>
+                <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                <div class="text-right flex justify-end gap-4">
+                  <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                  <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                </div>
+              </div>
+
+              <div class="min-w-[600px] w-full py-5 px-3 text-sm grid grid-cols-4 gap-4 border-b border-gray-100 items-center whitespace-nowrap">
+                <p class="text-sm font-medium truncate whitespace-nowrap overflow-hidden col-span-2 text-gray-900">
+                  O futuro da IA no desenvolvimento de software
+                </p>
+                <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                <div class="text-right flex justify-end gap-4">
+                  <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                  <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                </div>
+              </div>
+            </div>
+
+
+          </x-ui.panel>
+        </div>
         <div x-show="tab === 'drafts'">Conteúdo da aba Drafts</div>
         <div x-show="tab === 'stats'">Conteúdo da aba Stats</div>
       </div>

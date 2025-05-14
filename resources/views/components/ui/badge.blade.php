@@ -6,7 +6,7 @@
 ])
 
 @php
-  $classes = 'inline-block shrink-0';
+  $classes = 'max-w-max inline-block shrink-0';
 
   $classes .= $pill ? ' rounded-3xl' : ' rounded-sm';
   $classes .= $small ? ' px-3 py-1 text-xs font-semibold' : ' px-4 py-2 text-sm font-medium';
