@@ -149,74 +149,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b border-gray-100 text-gray-900">
-                      <td class="px-3 py-5 truncate">
-                        O futuro da IA no desenvolvimento de software
-                      </td>
-                      <th class="px-3 py-3 hidden md:table-cell">Webdev</th>
-                      <td class="px-3 py-5 hidden sm:table-cell text-gray-500 whitespace-nowrap">
-                        13/05/2025
-                      </td>
-                      <td class="px-3 py-5 hidden lg:table-cell text-gray-500 whitespace-nowrap">
-                        2025
-                      </td>
-                      <td class="px-3 py-5 whitespace-nowrap">
-                        <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
-                      </td>
-                      <td class="px-3 py-5 text-right whitespace-nowrap">
-                        <div class="flex justify-end gap-4">
-                          <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
-                        </div>
-                      </td>
-                    </tr>
-  
-                    <tr class="border-b border-gray-100 text-gray-900">
-                      <td class="px-3 py-5 truncate">
-                        O futuro da IA no desenvolvimento de software
-                      </td>
-                      <th class="px-3 py-3 hidden md:table-cell">Webdev</th>
-                      <td class="px-3 py-5 hidden sm:table-cell text-gray-500 whitespace-nowrap">
-                        13/05/2025
-                      </td>
-                      <td class="px-3 py-5 hidden lg:table-cell text-gray-500 whitespace-nowrap">
-                        2025
-                      </td>
-                      <td class="px-3 py-5 whitespace-nowrap">
-                        <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
-                      </td>
-                      <td class="px-3 py-5 text-right whitespace-nowrap">
-                        <div class="flex justify-end gap-4">
-                          <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
-                        </div>
-                      </td>
-                    </tr>
-  
-                    <tr class="border-b border-gray-100 text-gray-900">
-                      <td class="px-3 py-5 truncate">
-                        O futuro da IA no desenvolvimento de software
-                      </td>
-                      <th class="px-3 py-3 hidden md:table-cell">Webdev</th>
-                      <td class="px-3 py-5 hidden sm:table-cell text-gray-500 whitespace-nowrap">
-                        13/05/2025
-                      </td>
-                      <td class="px-3 py-5 hidden lg:table-cell text-gray-500 whitespace-nowrap">
-                        2025
-                      </td>
-                      <td class="px-3 py-5 whitespace-nowrap">
-                        <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
-                      </td>
-                      <td class="px-3 py-5 text-right whitespace-nowrap">
-                        <div class="flex justify-end gap-4">
-                          <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
-                          <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
-                        </div>
-                      </td>
-                    </tr>
+                    @foreach ($posts as $post)
+                      <tr class="border-b border-gray-100 text-gray-900">
+                        <td class="px-3 py-5 truncate">
+                          {{ $post->title }}
+                        </td>
+                        <th class="px-3 py-3 hidden md:table-cell">{{ $post->category->name }}</th>
+                        <td class="px-3 py-5 hidden sm:table-cell text-gray-500 whitespace-nowrap">
+                          {{ $post->created_at->format('d/m/Y') }}
+                        </td>
+                        <td class="px-3 py-5 hidden lg:table-cell text-gray-500 whitespace-nowrap">
+                          {{ $post->views }}
+                        </td>
+                        <td class="px-3 py-5 whitespace-nowrap">
+                          @if ($post->featured)
+                            <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                          @endif
+                        </td>
+                        <td class="px-3 py-5 text-right whitespace-nowrap">
+                          <div class="flex justify-end gap-4">
+                            <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                            <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                            <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
+                          </div>
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
