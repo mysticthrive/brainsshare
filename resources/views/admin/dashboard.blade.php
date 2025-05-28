@@ -164,12 +164,21 @@
                         <td class="px-3 py-5 whitespace-nowrap">
                           @if ($post->featured)
                             <x-ui.badge variant="blue" small>Destaque</x-ui.badge>
+                          @elseif ($post->published)
+                            <x-ui.badge small>Publicado</x-ui.badge>
+                          @else
+                            <x-ui.badge variant="white" small>Oculto</x-ui.badge>
                           @endif
                         </td>
+
                         <td class="px-3 py-5 text-right whitespace-nowrap">
                           <div class="flex justify-end gap-4">
-                            <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
-                            <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                            <a href="/posts/{{ $post->slug }}" target="_blank">
+                              <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
+                            </a>
+                            <a href="/admin/posts/{{ $post->id }}/edit" target="_blank">
+                              <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
+                            </a>
                             <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
                           </div>
                         </td>

@@ -22,4 +22,5 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 Route::middleware('auth')->prefix('/admin')->group(function () {
   Route::get('/dashboard', [AdminController::class, 'dashboard']);
   Route::get('/posts/create', [PostController::class, 'create']);
+  Route::get('/posts/{post:id}/edit', [PostController::class, 'edit']);
 });

@@ -56,4 +56,10 @@ class PostController extends Controller
 
     return redirect('/');
   }
+
+  public function edit(Post $post)
+  {
+    $categories = Category::all();
+    return view('posts.edit', ['post' => $post, 'categories' => $categories]);
+  }
 }
