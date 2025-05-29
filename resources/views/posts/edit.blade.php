@@ -5,8 +5,9 @@
       <p class="text-gray-600">Preencha os campos abaixo para publicar um novo post.</p>
     </div>
 
-    <form action="/posts" method="POST" enctype="multipart/form-data" class="space-y-8">
+    <form action="/admin/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data" class="space-y-8">
       @csrf
+      @method('PATCH')
       <div class="flex flex-col gap-6 md:flex-row">
         <div class="space-y-6 flex-1">
           <x-ui.forms.input 
@@ -24,7 +25,13 @@
             tip="Um pequeno resumo que é exibido no card do post (opcional)"
           />
 
-          <x-ui.forms.select name="category_id" label="Categoria" :options="$categories" placeholder="Selecione a categoria"/>
+          <x-ui.forms.select 
+            name="category_id" 
+            label="Categoria"
+            :options="$categories"
+            selected="{{ $post->category->id }}"
+            placeholder="Selecione a categoria"
+          />
 
           <x-ui.forms.input 
             name="tags"

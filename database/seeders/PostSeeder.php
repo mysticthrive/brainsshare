@@ -16,10 +16,14 @@ class PostSeeder extends Seeder
     public function run(): void
     {
       $tags = Tag::factory(3)->create();
-      Post::factory(10)->hasAttached($tags)->create(new Sequence([
-        'published' => false
-      ], [
-        'published' => true
-      ]));
+
+      Post::factory(12)
+        ->hasAttached($tags)
+        ->create(
+          fn () => [
+            'featured' => $featured = fake()->boolean(40),
+            'published' => $featured || fake()->boolean(60)
+          ]
+        );
     }
 }

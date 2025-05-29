@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -45,6 +46,7 @@ class PostController extends Controller
 
     $attributes['slug'] = Str::slug($attributes['title']);
     $attributes['published'] = $request->has('published');
+    $attributes['featured'] = $request->has('featured');
     $attributes['image'] = $request->image->store('posts');
 
     if (empty($attributes['excerpt'])) {
@@ -61,5 +63,36 @@ class PostController extends Controller
   {
     $categories = Category::all();
     return view('posts.edit', ['post' => $post, 'categories' => $categories]);
+  }
+
+  /**
+    * @param \Illuminate\Http\Request $request
+  */
+  public function update(PostRequest $request, Post $post)
+  {
+    $attributes = $request->validated();
+    
+    $attributes['slug'] = Str::slug($attributes['title']);
+
+    $attributes['published'] = $request->has('published');
+    $attributes['featured'] = $request->has('featured');
+
+    if($request->hasFile('image')){
+      if($post->image){
+        Storage::delete($post->image);
+      }
+
+      $attributes['image'] = $request->file('image')->store('posts');
+    }
+
+    if (empty($attributes['excerpt'])) {
+      $attributes['excerpt'] = Str::limit(strip_tags($attributes['content']), 150);
+    }
+
+    $post->update(Arr::except($attributes, 'tags'));
+
+    $post->syncTags($request->tags);
+
+    return redirect('/admin/dashboard');
   }
 }

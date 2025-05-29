@@ -48,4 +48,25 @@ class Post extends Model
       }
     }
   }
+
+  public function syncTags(?string $tagsSubmmited)
+  {
+    if (!$tagsSubmmited) {
+      $this->tags()->detach();
+      return;
+    }
+
+    $existingTags = $this->tags->pluck('name')->toArray();
+    $newTags = array_map('trim', explode(',', $tagsSubmmited));
+
+    foreach (array_diff($newTags, $existingTags) as $tag) {
+      $this->tag($tag);
+    }
+
+    if ($tagsToRemove = array_diff($existingTags, $newTags)) {
+      $this->tags()->detach(
+        Tag::whereIn('name', $tagsToRemove)->pluck('id')
+      );
+    }
+  }
 }
