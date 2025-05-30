@@ -22,13 +22,20 @@ class PostRequest extends FormRequest
      */
     public function rules(): array
     {
-      return [
+      $rules = [
         'title' => ['required'],
         'excerpt' => ['nullable'],
         'category_id' => ['required'],
         'tags' => ['required', 'string', 'regex:/^[a-zA-Z0-9áéíóúãõâêôçÁÉÍÓÚÃÕÂÊÔÇ\-\s,]+$/'],
-        'image' => ['required', 'image', File::types(['jpg', 'webp'])],
         'content' => ['required']
       ];
+
+      if(request()->isMethod('post')){
+        $rules['image'] = ['required', 'image', File::types(['jpg', 'webp'])];
+      }else{
+        $rules['image'] = ['nullable', 'image', File::types(['jpg', 'webp'])];
+      }
+
+      return $rules;
     }
 }

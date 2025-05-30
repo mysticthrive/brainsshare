@@ -42,21 +42,12 @@ class PostController extends Controller
     * @param \Illuminate\Http\Request $request
   */
   public function store(PostRequest $request){
-    $attributes = $request->validated();
-
-    $attributes['slug'] = Str::slug($attributes['title']);
-    $attributes['published'] = $request->has('published');
-    $attributes['featured'] = $request->has('featured');
-    $attributes['image'] = $request->image->store('posts');
-
-    if (empty($attributes['excerpt'])) {
-      $attributes['excerpt'] = Str::limit(strip_tags($attributes['content']), 150);
-    }
+    $attributes = $this->prepareAttributes($request);
 
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
     $post->addTags($request->tags);
 
-    return redirect('/');
+    return redirect('/admin/dashboard');
   }
 
   public function edit(Post $post)
@@ -70,6 +61,19 @@ class PostController extends Controller
   */
   public function update(PostRequest $request, Post $post)
   {
+    $attributes = $this->prepareAttributes($request, $post);
+
+    $post->update(Arr::except($attributes, 'tags'));
+    $post->syncTags($request->tags);
+
+    return redirect('/admin/dashboard');
+  }
+
+  /**
+    * @param \Illuminate\Http\Request $request
+  */
+  private function prepareAttributes(PostRequest $request, ?Post $post = null)
+  {
     $attributes = $request->validated();
     
     $attributes['slug'] = Str::slug($attributes['title']);
@@ -78,7 +82,7 @@ class PostController extends Controller
     $attributes['featured'] = $request->has('featured');
 
     if($request->hasFile('image')){
-      if($post->image){
+      if($post && $post->image){
         Storage::delete($post->image);
       }
 
@@ -89,10 +93,6 @@ class PostController extends Controller
       $attributes['excerpt'] = Str::limit(strip_tags($attributes['content']), 150);
     }
 
-    $post->update(Arr::except($attributes, 'tags'));
-
-    $post->syncTags($request->tags);
-
-    return redirect('/admin/dashboard');
+    return $attributes;
   }
 }

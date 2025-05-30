@@ -176,7 +176,7 @@
                             <a href="/posts/{{ $post->slug }}" target="_blank">
                               <img src="{{ asset('images/icons/eye.svg') }}" class="w-5">
                             </a>
-                            <a href="/admin/posts/{{ $post->id }}/edit" target="_blank">
+                            <a href="/admin/posts/{{ $post->id }}/edit">
                               <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
                             </a>
                             <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
