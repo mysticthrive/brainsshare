@@ -69,6 +69,12 @@ class PostController extends Controller
     return redirect('/admin/dashboard');
   }
 
+  public function destroy(Post $post)
+  {
+    $post->delete();
+    return redirect('/admin/dashboard');
+  }
+
   /**
     * @param \Illuminate\Http\Request $request
   */

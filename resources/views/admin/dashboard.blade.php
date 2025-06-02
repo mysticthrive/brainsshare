@@ -179,7 +179,13 @@
                             <a href="/admin/posts/{{ $post->id }}/edit">
                               <img src="{{ asset('images/icons/edit.svg') }}" class="w-5">
                             </a>
-                            <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
+                            <form action="/admin/posts/{{ $post->id }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button class="cursor-pointer">
+                                <img src="{{ asset('images/icons/trash.svg') }}" class="w-5">
+                              </button>
+                            </form>
                           </div>
                         </td>
                       </tr>

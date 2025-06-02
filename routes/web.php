@@ -7,7 +7,6 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterUserController;
 
 Route::get('/', [PostController::class, 'index']);
-Route::post('/posts', [PostController::class, 'store']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::middleware('guest')->group(function () {
@@ -22,6 +21,8 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 Route::middleware('auth')->prefix('/admin')->group(function () {
   Route::get('/dashboard', [AdminController::class, 'dashboard']);
   Route::get('/posts/create', [PostController::class, 'create']);
-  Route::get('/posts/{post:id}/edit', [PostController::class, 'edit']);
+  Route::post('/posts', [PostController::class, 'store']);
+  Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
   Route::patch('/posts/{post}', [PostController::class, 'update']);
+  Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 });
