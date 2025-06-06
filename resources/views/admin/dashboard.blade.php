@@ -14,7 +14,7 @@
         </div>
   
         <div class="mt-6">
-          <x-blog.tabs.overview :$posts :$publishedLast30Days/>
+          <x-blog.tabs.overview :$posts :$publishedLast30Days :$recentActivities/>
           <x-blog.tabs.posts :$posts/>
           <x-blog.tabs.drafts/>
         </div>

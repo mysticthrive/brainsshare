@@ -50,65 +50,22 @@
       <p class="text-sm text-gray-700">Sua ultimas atividades no blog</p>
     </div>
     <div class="space-y-4">
-      <div class="flex items-center gap-3">
-        <div class="w-8 p-2 rounded-full bg-blue-100">
-          <img src="{{ asset('images/icons/doc-blue.svg') }}" alt="">
+      @foreach ($recentActivities as $activity)
+        <div class="flex items-center gap-3">
+          <div class="w-8 p-2 rounded-full bg-blue-100">
+            <img src="{{ asset('images/icons/doc-blue.svg') }}" alt="">
+          </div>
+          
+          <div class="flex-1 min-w-0">
+            <h4 class="text-sm font-bold text-gray-800">{{ $activity->action }}</h4>
+            <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
+              {{ $activity->description }}
+            </p>
+          </div>
+          
+          <span class="text-xs whitespace-nowrap text-gray-700">{{ $activity->created_at->diffForHumans() }}</span>
         </div>
-
-        <div class="flex-1 min-w-0">
-          <h4 class="text-sm font-bold text-gray-800">Post publicado</h4>
-          <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
-            O futuro da IA no desenvolvimento de software
-          </p>
-        </div>
-
-        <span class="text-xs whitespace-nowrap text-gray-700">2 horas atrás</span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-8 p-2 rounded-full bg-blue-100">
-          <img src="{{ asset('images/icons/edit-blue.svg') }}" alt="">
-        </div>
-
-        <div class="flex-1 min-w-0">
-          <h4 class="text-sm font-bold text-gray-800">Post atualizado</h4>
-          <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
-            O futuro da IA no desenvolvimento de software
-          </p>
-        </div>
-
-        <span class="text-xs whitespace-nowrap text-gray-700">5 horas atrás</span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-8 p-2 rounded-full bg-blue-100">
-          <img src="{{ asset('images/icons/comment-blue.svg') }}" alt="">
-        </div>
-
-        <div class="flex-1 min-w-0">
-          <h4 class="text-sm font-bold text-gray-800">Comentário recebido</h4>
-          <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
-            O futuro da IA no desenvolvimento de software
-          </p>
-        </div>
-
-        <span class="text-xs whitespace-nowrap text-gray-700">1 hora atrás</span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <div class="w-8 p-2 rounded-full bg-blue-100">
-          <img src="{{ asset('images/icons/doc-blue.svg') }}" alt="">
-        </div>
-
-        <div class="flex-1 min-w-0">
-          <h4 class="text-sm font-bold text-gray-800">Post publicado</h4>
-          <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
-            O futuro da IA no desenvolvimento de software
-          </p>
-        </div>
-
-        <span class="text-xs whitespace-nowrap text-gray-700">2 horas atrás</span>
-      </div>
+      @endforeach
     </div>
   </x-ui.panel>
 </div>

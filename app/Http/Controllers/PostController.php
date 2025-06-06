@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Models\ActivityLog;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
@@ -47,7 +48,15 @@ class PostController extends Controller
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
     $post->addTags($request->tags);
 
-    return redirect('/admin/dashboard');
+    ActivityLog::create([
+      'user_id' => Auth::user()->id,
+      'action' => 'created_post',
+      'description' => 'Criou o post "' . $post->title . '"',
+      'subject_type' => Post::class,
+      'subject_id' => $post->id
+    ]);
+
+    return redirect('/admin/dashboard?tab=posts');
   }
 
   public function edit(Post $post)
@@ -66,13 +75,13 @@ class PostController extends Controller
     $post->update(Arr::except($attributes, 'tags'));
     $post->syncTags($request->tags);
 
-    return redirect('/admin/dashboard');
+    return redirect('/admin/dashboard?tab=posts');
   }
 
   public function destroy(Post $post)
   {
     $post->delete();
-    return redirect('/admin/dashboard');
+    return redirect('/admin/dashboard?tab=posts');
   }
 
   /**
