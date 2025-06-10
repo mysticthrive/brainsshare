@@ -7,6 +7,7 @@ use App\Models\ActivityLog;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use App\Traits\LogsActivity;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+  use LogsActivity;
+
   public function index()
   {
     $recentPosts = Post::latest()
@@ -48,13 +51,7 @@ class PostController extends Controller
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
     $post->addTags($request->tags);
 
-    ActivityLog::create([
-      'user_id' => Auth::user()->id,
-      'action' => 'created_post',
-      'description' => 'Criou o post "' . $post->title . '"',
-      'subject_type' => Post::class,
-      'subject_id' => $post->id
-    ]);
+    $this->logActivity('Post publicado', 'publicou o post', $post);
 
     return redirect('/admin/dashboard?tab=posts');
   }
@@ -75,12 +72,17 @@ class PostController extends Controller
     $post->update(Arr::except($attributes, 'tags'));
     $post->syncTags($request->tags);
 
+    $this->logActivity('Post atualizado', 'atualizou o post', $post);
+
     return redirect('/admin/dashboard?tab=posts');
   }
 
   public function destroy(Post $post)
   {
     $post->delete();
+
+    $this->logActivity('Post deletado', 'deletou o post', $post);
+
     return redirect('/admin/dashboard?tab=posts');
   }
 
@@ -95,19 +97,27 @@ class PostController extends Controller
 
     $attributes['published'] = $request->has('published');
     $attributes['featured'] = $request->has('featured');
-
-    if($request->hasFile('image')){
-      if($post && $post->image){
-        Storage::delete($post->image);
-      }
-
-      $attributes['image'] = $request->file('image')->store('posts');
-    }
+    $attributes['image'] = $this->handleImageUpload($request, $post);
 
     if (empty($attributes['excerpt'])) {
       $attributes['excerpt'] = Str::limit(strip_tags($attributes['content']), 150);
     }
 
     return $attributes;
+  }
+
+  /**
+    * @param \Illuminate\Http\Request $request
+  */
+  private function handleImageUpload(PostRequest $request, ?Post $post = null){
+    if($request->hasFile('image')){
+      if($post && $post->image){
+        Storage::delete($post->image);
+      }
+
+      return $attributes['image'] = $request->file('image')->store('posts');
+    }
+
+    return $post->image ?? null;
   }
 }
