@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
-use App\Models\ActivityLog;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
@@ -33,6 +32,8 @@ class PostController extends Controller
   }
 
   public function show(Post $post){
+    $post->increment('views');
+
     return view('posts.show', compact('post'));
   }
 
@@ -51,7 +52,7 @@ class PostController extends Controller
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
     $post->addTags($request->tags);
 
-    $this->logActivity('Post publicado', 'publicou o post', $post);
+    $this->logActivity('Post publicado', $post);
 
     return redirect('/admin/dashboard?tab=posts');
   }
@@ -72,7 +73,7 @@ class PostController extends Controller
     $post->update(Arr::except($attributes, 'tags'));
     $post->syncTags($request->tags);
 
-    $this->logActivity('Post atualizado', 'atualizou o post', $post);
+    $this->logActivity('Post atualizado', $post);
 
     return redirect('/admin/dashboard?tab=posts');
   }
@@ -81,7 +82,7 @@ class PostController extends Controller
   {
     $post->delete();
 
-    $this->logActivity('Post deletado', 'deletou o post', $post);
+    $this->logActivity('Post deletado', $post);
 
     return redirect('/admin/dashboard?tab=posts');
   }
@@ -115,7 +116,7 @@ class PostController extends Controller
         Storage::delete($post->image);
       }
 
-      return $attributes['image'] = $request->file('image')->store('posts');
+      return $request->file('image')->store('posts', 'public');
     }
 
     return $post->image ?? null;
