@@ -12,11 +12,11 @@
     </div>
 
     <div class="mx-auto my-8 rounded-md overflow-hidden">
-      <img src="{{ $post->image }}" class="w-full object-cover" alt="">
+      <img src="{{ asset('storage/' . $post->image) }}" class="w-full object-cover" alt="">
     </div>
 
     <div class="max-w-[700px] mx-auto text-gray-900">
-      {{ $post->content }}
+      {!! $post->content !!}
     </div>
   </section>
 </x-layout>

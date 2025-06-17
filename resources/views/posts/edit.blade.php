@@ -19,7 +19,7 @@
           <x-ui.forms.input 
             name="excerpt" 
             label="Resumo" 
-            value="{{ $post->excerpt }}"
+            value="{{ html_entity_decode($post->excerpt) }}"
             as="textarea" 
             placeholder="Resumo"
             tip="Um pequeno resumo que é exibido no card do post (opcional)"
@@ -80,10 +80,10 @@
     language_url: '/js/lang/pt_BR.js',
     menubar: false,
     plugins: [
-      'placeholder', 'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount'
+      'fullscreen', 'placeholder', 'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount'
     ],
     placeholder: 'Escreva aqui o conteúdo do post...',
-    toolbar: 'styles | bold italic underline strikethrough | outdent indent | link image',
+    toolbar: 'styles | bold italic underline strikethrough | outdent indent | fullscreen link image ',
     branding: false
   });
 </script>

@@ -39,7 +39,7 @@
       name="{{ $name }}"
       rows="4"
       {{ $attributes->merge(['class' => $inputClasses]) }}
-    >{{ $value }}</textarea>
+    >{!! $value !!}</textarea>
   @else
     <input 
       type="{{ $type }}"
