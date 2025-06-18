@@ -15,8 +15,8 @@
       <img src="{{ asset('storage/' . $post->image) }}" class="w-full object-cover" alt="">
     </div>
 
-    <div class="max-w-[700px] mx-auto text-gray-900">
+    <article class="max-w-[700px] mx-auto prose text-gray-900">
       {!! $post->content !!}
-    </div>
+    </article>
   </section>
 </x-layout>

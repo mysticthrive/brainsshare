@@ -22,7 +22,7 @@
               <td class="px-3 py-5 truncate">
                 {{ $post->title }}
               </td>
-              <th class="px-3 py-3 hidden md:table-cell">{{ $post->category->name }}</th>
+              <th class="px-3 py-3 hidden text-left md:table-cell">{{ $post->category->name }}</th>
               <td class="px-3 py-5 hidden sm:table-cell text-gray-500 whitespace-nowrap">
                 {{ $post->created_at->format('d/m/Y') }}
               </td>
