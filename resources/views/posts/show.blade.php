@@ -19,4 +19,12 @@
       {!! $post->content !!}
     </article>
   </section>
+
+  <section class="max-w-[960px] py-20 px-5 mx-auto">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      @foreach ($relatedPosts as $post)
+        <x-blog.post.card :$post/>
+      @endforeach
+    </div>
+  </section>
 </x-layout>

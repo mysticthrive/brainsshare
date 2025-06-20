@@ -33,8 +33,9 @@ class PostController extends Controller
 
   public function show(Post $post){
     $post->increment('views');
+    $relatedPosts = $post->related();
 
-    return view('posts.show', compact('post'));
+    return view('posts.show', compact('post', 'relatedPosts'));
   }
 
   public function create()

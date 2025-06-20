@@ -69,4 +69,29 @@ class Post extends Model
       );
     }
   }
+
+  public function related($limit = 3)
+  {
+    $tagIds = $this->tags->pluck('id')->toArray();
+
+    $related = Post::whereHas('tags', function ($query) use ($tagIds) {
+        $query->whereIn('tags.id', $tagIds);
+      })
+      ->where('id', '!=', $this->id)
+      ->where('published', true)
+      ->latest()
+      ->take($limit)
+      ->get();
+
+    if ($related->isEmpty()) {
+      $related = Post::where('category_id', $this->category_id)
+        ->where('id', '!=', $this->id)
+        ->where('published', true)
+        ->latest()
+        ->take($limit)
+        ->get();
+    }
+
+    return $related;
+  }
 }
