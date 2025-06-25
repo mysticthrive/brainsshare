@@ -50,9 +50,15 @@
       <p class="text-sm text-gray-700">Sua ultimas atividades no blog</p>
     </div>
     <div class="space-y-4">
-      @foreach ($recentActivities as $activity)
-        <x-blog.dashboard.activity-item :$activity/>
+      @foreach ($groupedActivities as $label => $activityGroup)
+        <h3 class="font-medium">{{ $label }}</h3>
+        @foreach ($activityGroup as $activity)
+          <x-blog.dashboard.activity-item :$activity/>
+        @endforeach
+        <hr class="text-gray-200">
       @endforeach
+
+      {{ $activities->links() }}
     </div>
   </x-ui.panel>
 </div>

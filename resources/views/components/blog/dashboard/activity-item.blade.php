@@ -21,6 +21,4 @@
       {{ $activity->description }}
     </p>
   </div>
-  
-  <span class="text-xs whitespace-nowrap text-gray-700">{{ $activity->created_at->diffForHumans() }}</span>
 </div>

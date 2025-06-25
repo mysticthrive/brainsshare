@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ActivityLog;
 use App\Models\Post;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -16,8 +15,23 @@ class AdminController extends Controller
       ->where('created_at', '>=', Carbon::now()->subDays(30))
       ->count();
 
-    $recentActivities = ActivityLog::all();
+    $activities = ActivityLog::latest()->paginate(10);
 
-    return view('admin.dashboard', ['posts' => $posts, 'publishedLast30Days' => $publishedLast30Days, 'recentActivities' => $recentActivities]);
+    $groupedActivities = $activities->getCollection()->groupBy(function ($activity){
+      $daysAgo = (int) $activity->created_at->diffInDays(Carbon::now());
+
+      return match (true) {
+        $daysAgo === 0 => 'Hoje',
+        $daysAgo === 1 => 'Ontem',
+        default => $daysAgo . ' dias atras'
+      };
+    });
+
+    return view('admin.dashboard', [
+      'posts' => $posts, 
+      'publishedLast30Days' => $publishedLast30Days, 
+      'groupedActivities' => $groupedActivities,
+      'activities' => $activities
+    ]);
   }
 }
