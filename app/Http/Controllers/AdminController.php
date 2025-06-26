@@ -10,12 +10,12 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
-    $posts = Post::all();
+    $posts = Post::latest()->paginate(10, ['*'], 'postsPage');
     $publishedLast30Days = Post::where('published', true)
       ->where('created_at', '>=', Carbon::now()->subDays(30))
       ->count();
 
-    $activities = ActivityLog::latest()->paginate(10);
+    $activities = ActivityLog::latest()->paginate(10, ['*'], 'activitiesPage');
 
     $groupedActivities = $activities->getCollection()->groupBy(function ($activity){
       $daysAgo = (int) $activity->created_at->diffInDays(Carbon::now());

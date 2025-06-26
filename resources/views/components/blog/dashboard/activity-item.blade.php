@@ -16,7 +16,7 @@
   </div>
   
   <div class="flex-1 min-w-0">
-    <h4 class="text-sm font-bold text-gray-800">{{ $activity->action }}</h4>
+    <h4 class="text-sm font-bold text-gray-800"><a href="">{{ $activity->action }}</a></h4>
     <p class="text-sm truncate whitespace-nowrap overflow-hidden text-gray-700">
       {{ $activity->description }}
     </p>
