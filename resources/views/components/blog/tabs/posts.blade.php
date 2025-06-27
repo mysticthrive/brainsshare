@@ -61,6 +61,6 @@
         </tbody>
       </table>
     </div>
-    {{ $posts->links() }}
+    {{ $posts->appends(['tab' => 'posts'])->links() }}
   </x-ui.panel>
 </div>

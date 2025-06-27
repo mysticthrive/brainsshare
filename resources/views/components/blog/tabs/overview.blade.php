@@ -6,8 +6,8 @@
         <img src="{{ asset('images/icons/doc.svg') }}" class="w-4">
       </div>
       <div>
-        <span class="text-3xl font-bold text-gray-900">{{ $posts->count() }}</span>
-        <p class="text-sm text-gray-700">+{{ $publishedLast30Days }} no ultimo mês</p>
+        <span class="text-3xl font-bold text-gray-900">{{ $statistics['totalPosts'] }}</span>
+        <p class="text-sm text-gray-700">+{{ $statistics['publishedLast30Days'] }} no ultimo mês</p>
       </div>
     </x-ui.panel>
     
@@ -17,7 +17,7 @@
         <img src="{{ asset('images/icons/eye.svg') }}" class="w-4">
       </div>
       <div>
-        <span class="text-3xl font-bold text-gray-900">{{ $posts->sum('views') }}</span>
+        <span class="text-3xl font-bold text-gray-900">{{ $statistics['totalViews'] }}</span>
         <p class="text-sm text-gray-700">+18% no ultimo mês</p>
       </div>
     </x-ui.panel>
@@ -58,7 +58,7 @@
         <hr class="text-gray-200">
       @endforeach
 
-      {{ $activities->links() }}
+      {{ $activities->appends(['tab' => 'overview'])->links() }}
     </div>
   </x-ui.panel>
 </div>

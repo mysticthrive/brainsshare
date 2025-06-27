@@ -11,7 +11,7 @@
 <body>
   <x-nav/>
 
-  <main>
+  <main class="min-h-screen">
     {{ $slot }}
   </main>
 

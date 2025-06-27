@@ -10,28 +10,47 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
-    $posts = Post::latest()->paginate(10, ['*'], 'postsPage');
-    $publishedLast30Days = Post::where('published', true)
-      ->where('created_at', '>=', Carbon::now()->subDays(30))
-      ->count();
+    $posts = $this->getPaginatedPosts();
+    $statistics = $this->getStatistics();
+    $activities = $this->getPaginatedActivities();
+    $groupedActivities = $this->groupActivitiesByDate($activities->getCollection());
 
-    $activities = ActivityLog::latest()->paginate(10, ['*'], 'activitiesPage');
+    return view('admin.dashboard', compact('posts', 'statistics', 'groupedActivities', 'activities'));
+  }
 
-    $groupedActivities = $activities->getCollection()->groupBy(function ($activity){
+  private function getPaginatedPosts()
+  {
+    return Post::latest()->paginate(10, ['*'], 'postsPage');
+  }
+
+  private function getStatistics(): array
+  {
+    $thirtyDaysAgo = now()->subDays(30);
+
+    return [
+      'totalPosts' => Post::count(),
+      'totalViews' => Post::sum('views'),
+      'publishedLast30Days' => Post::where('published', true)
+                                  ->where('created_at', '>=', $thirtyDaysAgo)
+                                  ->count(),
+    ];
+  }
+
+  private function getPaginatedActivities()
+  {
+    return ActivityLog::latest()->paginate(10, ['*'], 'activitiesPage');
+  }
+
+  private function groupActivitiesByDate($activitiesCollection)
+  {
+    return $activitiesCollection->groupBy(function ($activity) {
       $daysAgo = (int) $activity->created_at->diffInDays(Carbon::now());
 
       return match (true) {
         $daysAgo === 0 => 'Hoje',
         $daysAgo === 1 => 'Ontem',
-        default => $daysAgo . ' dias atras'
+        default => "{$daysAgo} dias atrás"
       };
     });
-
-    return view('admin.dashboard', [
-      'posts' => $posts, 
-      'publishedLast30Days' => $publishedLast30Days, 
-      'groupedActivities' => $groupedActivities,
-      'activities' => $activities
-    ]);
   }
 }
