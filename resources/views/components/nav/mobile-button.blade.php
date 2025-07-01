@@ -1,4 +1,4 @@
-<div class="-mr-2 flex md:hidden">
+<div class="flex md:hidden">
   <button type="button" id="menu-button" class="relative inline-flex items-center justify-center rounded-md bg-blue-600 p-2 text-white hover:bg-blue-800 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden" aria-controls="mobile-menu" aria-expanded="false">
     <span class="absolute -inset-0.5"></span>
     <span class="sr-only">Open main menu</span>

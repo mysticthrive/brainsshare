@@ -21,17 +21,17 @@
     </div>
   </section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto">
-    <x-section-heading>Trending Topics</x-section-heading>
+  <x-section compact>
+    <x-section-heading>Tópicso mais acessados</x-section-heading>
 
     <div class="flex item-center flex-wrap gap-3">
       @foreach ($tags as $tag)
         <x-ui.badge href="/tags/{{ strtolower($tag->name) }}">{{ $tag->name }}</x-ui.badge> 
       @endforeach
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+  <x-section class="border-t border-gray-200">
     <x-section-heading link="#">Artigos recentes</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,9 +39,9 @@
         <x-blog.post.card :$post/>
       @endforeach
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+  <x-section compact class="border-t border-gray-200">
     <x-section-heading>Mais lidos da semana</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2">
@@ -49,9 +49,9 @@
         <x-blog.post.list-item :$post :$index/>
       @endforeach
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+  <x-section class="border-t border-gray-200">
     <x-section-heading link="#">Escolha do editor</x-section-heading>
 
     <div class="grid gap-6 md:grid-cols-3">
@@ -59,9 +59,9 @@
         <x-blog.post.card compact :$post/>
       @endforeach
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+  <x-section class="border-t border-gray-200">
     <x-section-heading link="#">Noticias de tecnologia</x-section-heading>
 
     <div class="grid gap-6">
@@ -69,9 +69,9 @@
       <x-blog.news.card/>
       <x-blog.news.card/>
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto border-t border-gray-200">
+  <x-section class="border-t border-gray-200">
     <x-section-heading link="#">Recursos gratuitos</x-section-heading>
 
     <div class="grid gap-6 md:grid-cols-3">
@@ -79,9 +79,9 @@
       <x-blog.resource.card/>
       <x-blog.resource.card/>
     </div>
-  </section>
+  </x-section>
 
-  <section class="max-w-[1200px] py-16 px-5 mx-auto">
+  <x-section>
     <div class="p-10 rounded-xl text-center bg-blue-50">
       <div class="max-w-xl mx-auto">
         <div class="space-y-4">
@@ -97,5 +97,5 @@
         <p class="text-xs text-blue-600">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
       </div>
     </div>
-  </section>
+  </x-section>
 </x-layout>

@@ -1,7 +1,7 @@
 <x-layout>
-  <section class="max-w-[1100px] mx-auto py-8 px-5 md:py-14 lg:py-20">
+  <x-section>
     <div class="mb-12 space-y-2">
-      <h1 class="text-3xl font-black text-gray-900 md:text-4xl lg:text-5xl">Criar novo post</h1>
+      <h1 class="text-3xl font-black text-gray-900 md:text-4xl lg:text-5xl">Editar post</h1>
       <p class="text-gray-600">Preencha os campos abaixo para publicar um novo post.</p>
     </div>
 
@@ -68,9 +68,9 @@
           </div>
         </div>
       </div>
-      <x-ui.forms.button class="w-full ml-auto md:w-auto">Publicar</x-ui.forms.button>
+      <x-ui.forms.button class="w-full ml-auto md:w-auto">Atualizar</x-ui.forms.button>
     </form>
-  </section>
+  </x-section>
 </x-layout>
 
 <script>

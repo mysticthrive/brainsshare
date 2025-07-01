@@ -11,9 +11,9 @@ class AdminController extends Controller
   public function dashboard()
   {
     $posts = $this->getPaginatedPosts();
-    $statistics = $this->getStatistics();
     $activities = $this->getPaginatedActivities();
     $groupedActivities = $this->groupActivitiesByDate($activities->getCollection());
+    $statistics = $this->getStatistics();
 
     return view('admin.dashboard', compact('posts', 'statistics', 'groupedActivities', 'activities'));
   }
@@ -21,19 +21,6 @@ class AdminController extends Controller
   private function getPaginatedPosts()
   {
     return Post::latest()->paginate(10, ['*'], 'postsPage');
-  }
-
-  private function getStatistics(): array
-  {
-    $thirtyDaysAgo = now()->subDays(30);
-
-    return [
-      'totalPosts' => Post::count(),
-      'totalViews' => Post::sum('views'),
-      'publishedLast30Days' => Post::where('published', true)
-                                  ->where('created_at', '>=', $thirtyDaysAgo)
-                                  ->count(),
-    ];
   }
 
   private function getPaginatedActivities()
@@ -52,5 +39,16 @@ class AdminController extends Controller
         default => "{$daysAgo} dias atrás"
       };
     });
+  }
+
+  private function getStatistics(): array
+  {
+    $thirtyDaysAgo = now()->subDays(30);
+
+    return [
+      'totalPosts' => Post::count(),
+      'totalViews' => Post::sum('views'),
+      'publishedLast30Days' => Post::where('published', true)->where('created_at', '>=', $thirtyDaysAgo)->count(),
+    ];
   }
 }

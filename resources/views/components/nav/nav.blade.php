@@ -1,6 +1,6 @@
 <div class="min-h-full border-b border-b-gray-200">
   <nav>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] mx-auto px-2 md:px-4">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <a href="/" class="shrink-0 font-bold text-xl text-blue-600">

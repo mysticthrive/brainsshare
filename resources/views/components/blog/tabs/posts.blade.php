@@ -6,14 +6,14 @@
     </div>
     <div class="rounded border border-gray-200 overflow-x-auto">
       <table class="w-full text-sm table-auto">
-        <thead class="bg-gray-50 border-b border-gray-200">
+        <thead class="border-b border-gray-200">
           <tr class="text-left text-gray-500 font-bold">
-            <th class="px-3 py-3">Título</th>
-            <th class="px-3 py-3 hidden md:table-cell">Categoria</th>
-            <th class="px-3 py-3 hidden sm:table-cell">Data</th>
-            <th class="px-3 py-3 hidden lg:table-cell">Views</th>
-            <th class="px-3 py-3 whitespace-nowrap">Status</th>
-            <th class="min-w-[140px] px-3 py-3 text-right whitespace-nowrap">Ações</th>
+            <th class="px-3 py-5">Título</th>
+            <th class="px-3 py-5 hidden md:table-cell">Categoria</th>
+            <th class="px-3 py-5 hidden sm:table-cell">Data</th>
+            <th class="px-3 py-5 hidden lg:table-cell">Views</th>
+            <th class="px-3 py-5 whitespace-nowrap">Status</th>
+            <th class="min-w-[140px] px-3 py-5 text-right whitespace-nowrap">Ações</th>
           </tr>
         </thead>
         <tbody>

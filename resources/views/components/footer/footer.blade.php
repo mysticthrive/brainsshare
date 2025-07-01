@@ -1,5 +1,5 @@
-<footer class="pt-16 pb-10 px-5 mx-auto text-blue-200 bg-blue-950">
-  <div class="max-w-[1200px] mx-auto space-y-4">
+<footer class="text-blue-200 bg-blue-950">
+  <div class="max-w-[1200px] pt-16 pb-10 mx-auto px-2 md:px-4 space-y-4">
     <div class="pb-15 flex flex-col gap-8 justify-between border-b border-blue-900 md:flex-row">
       <div class="space-y-3 shrink-0 flex-1">
         <span class="text-xl font-bold text-white inline-block">TechInside</span>
