@@ -71,19 +71,9 @@
       <x-ui.forms.button class="w-full ml-auto md:w-auto">Atualizar</x-ui.forms.button>
     </form>
   </x-section>
-</x-layout>
 
-<script>
-  tinymce.init({
-    selector: '#content',
-    language: 'pt_BR',
-    language_url: '/js/lang/pt_BR.js',
-    menubar: false,
-    plugins: [
-      'fullscreen', 'placeholder', 'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'lists', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount'
-    ],
-    placeholder: 'Escreva aqui o conteúdo do post...',
-    toolbar: 'styles | bold italic underline strikethrough | numlist bullist | outdent indent | fullscreen link image ',
-    branding: false
-  });
-</script>
+  @push('scripts')
+    <script src="https://cdn.tiny.cloud/1/3qqrdxghokajgnwrpufmupg41lyo1e5llr6bymftc3btdx6v/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="module" src="{{ Vite::asset('resources/js/editors/tinymce.js') }}"></script>
+  @endpush
+</x-layout>
