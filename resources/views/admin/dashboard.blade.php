@@ -1,5 +1,5 @@
 <x-layout>
-  <div class="bg-gray-50">
+  <div class="bg-gray-50 flex-1">
     <x-section>
       <div class="max-w-[1280px] mx-auto">
         <div class="sm:flex items-center justify-between">

@@ -22,7 +22,7 @@
   </section>
 
   <x-section compact>
-    <x-section-heading>Tópicso mais acessados</x-section-heading>
+    <x-section-heading>Tópicos mais acessados</x-section-heading>
 
     <div class="flex item-center flex-wrap gap-3">
       @foreach ($tags as $tag)

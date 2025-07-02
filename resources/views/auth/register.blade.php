@@ -1,5 +1,5 @@
 <x-layout>
-  <section class="max-w-[800px] mx-auto py-8 px-5 md:py-14 lg:py-20">
+  <section class="w-full max-w-[600px] mx-auto px-2 md:px-4 py-8 md:py-14 lg:py-20">
     <x-page-heading title="Criar conta" subtitle="Preencha os campos abaixo para criar sua conta."/>
 
     <form action="/register" method="POST" class="space-y-8">

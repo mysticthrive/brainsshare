@@ -8,10 +8,10 @@
   <script src="https://cdn.tiny.cloud/1/3qqrdxghokajgnwrpufmupg41lyo1e5llr6bymftc3btdx6v/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
   <x-nav/>
 
-  <main>
+  <main class="flex-1 flex flex-col">
     {{ $slot }}
   </main>
 
