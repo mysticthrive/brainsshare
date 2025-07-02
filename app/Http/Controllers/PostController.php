@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
-use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use App\Traits\LogsActivity;
@@ -18,17 +17,11 @@ class PostController extends Controller
 
   public function index()
   {
-    $recentPosts = Post::latest()
-      ->take(6)
-      ->get();
+    $posts = Post::latest()
+      ->where('published', true)
+      ->paginate(6);
 
-    $mostReadPosts = Post::orderBy('views', 'DESC')
-      ->take(4)
-      ->get();
-      
-    $tags = Tag::all();
-
-    return view('posts.index', compact('recentPosts', 'mostReadPosts', 'tags'));
+    return view('posts.index', compact('posts'));
   }
 
   public function show(Post $post){
