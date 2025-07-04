@@ -27,7 +27,7 @@
           </div>
             
           <div class="mt-6">
-            <x-blog.tabs.overview :$statistics :$groupedActivities :$activities/>
+            <x-blog.tabs.overview :$statistics :$groupedActivities :$activities :$popularCategories/>
             <x-blog.tabs.posts :$posts/>
             <x-blog.tabs.drafts/>
           </div>

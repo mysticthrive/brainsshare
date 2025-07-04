@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActivityLog;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\ActivityLog;
 use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
@@ -15,7 +16,12 @@ class AdminController extends Controller
     $groupedActivities = $this->groupActivitiesByDate($activities->getCollection());
     $statistics = $this->getStatistics();
 
-    return view('admin.dashboard', compact('posts', 'statistics', 'groupedActivities', 'activities'));
+    $popularCategories = Category::withCount('posts')
+      ->orderByDesc('posts_count')
+      ->take(5)
+      ->get();
+
+    return view('admin.dashboard', compact('posts', 'statistics', 'groupedActivities', 'activities', 'popularCategories'));
   }
 
   private function getPaginatedPosts()
