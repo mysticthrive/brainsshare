@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Category;
+use App\Services\PostTagService;
 use App\Traits\LogsActivity;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -40,11 +41,11 @@ class PostController extends Controller
   /**
     * @param \Illuminate\Http\Request $request
   */
-  public function store(PostRequest $request){
+  public function store(PostTagService $postTagService, PostRequest $request){
     $attributes = $this->prepareAttributes($request);
 
     $post = Auth::user()->posts()->create(Arr::except($attributes, 'tags'));
-    $post->addTags($request->tags);
+    $postTagService->addTags($post, $request->tags);
 
     $this->logActivity('Post publicado', $post);
 
@@ -60,12 +61,12 @@ class PostController extends Controller
   /**
     * @param \Illuminate\Http\Request $request
   */
-  public function update(PostRequest $request, Post $post)
+  public function update(PostTagService $postTagService, PostRequest $request, Post $post)
   {
     $attributes = $this->prepareAttributes($request, $post);
 
     $post->update(Arr::except($attributes, 'tags'));
-    $post->syncTags($request->tags);
+    $postTagService->syncTags($post, $request->tags);
 
     $this->logActivity('Post atualizado', $post);
 
