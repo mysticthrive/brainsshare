@@ -15,11 +15,7 @@ class AdminController extends Controller
     $activities = $this->getPaginatedActivities();
     $groupedActivities = $this->groupActivitiesByDate($activities->getCollection());
     $statistics = $this->getStatistics();
-
-    $popularCategories = Category::withCount('posts')
-      ->orderByDesc('posts_count')
-      ->take(5)
-      ->get();
+    $popularCategories =  $this->getPopularCategories();
 
     return view('admin.dashboard', compact('posts', 'statistics', 'groupedActivities', 'activities', 'popularCategories'));
   }
@@ -45,6 +41,14 @@ class AdminController extends Controller
         default => "{$daysAgo} dias atrás"
       };
     });
+  }
+
+  private function getPopularCategories()
+  {
+    return Category::withCount('posts')
+      ->orderByDesc('posts_count')
+      ->take(5)
+      ->get();
   }
 
   private function getStatistics(): array
