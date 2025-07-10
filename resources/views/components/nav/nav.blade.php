@@ -10,6 +10,8 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <x-nav.desktop-link href="/" :active="request()->is('/')">Início</x-nav.desktop-link>
               <x-nav.desktop-link href="/posts" :active="request()->is('posts')">Posts</x-nav.desktop-link>
+              <x-nav.desktop-link>Categorias</x-nav.desktop-link>
+              <x-nav.desktop-link :active="request()->is('popular')">Mais lidos</x-nav.desktop-link>
             </div>
           </div>
         </div>

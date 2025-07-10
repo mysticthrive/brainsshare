@@ -30,7 +30,7 @@ class Post extends Model
   public function related(int $limit = 3)
   {
     return Post::query()
-      ->where(function($query) use ($limit) {
+      ->where(function($query) {
         $query->whereHas('tags', function($q) {
           $q->whereIn('tags.id', $this->tags->pluck('id'));
         })

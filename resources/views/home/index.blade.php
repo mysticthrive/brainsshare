@@ -45,7 +45,7 @@
     <x-section-heading>Mais lidos da semana</x-section-heading>
 
     <div class="grid gap-6 sm:grid-cols-2">
-      @foreach ($mostReadPosts as $index => $post)
+      @foreach ($mostReadPostsThisWeek as $index => $post)
         <x-blog.post.list-item :$post :$index/>
       @endforeach
     </div>

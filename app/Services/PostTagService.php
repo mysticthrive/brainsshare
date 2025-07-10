@@ -18,10 +18,10 @@ class PostTagService
     $post->tags()->attach($tag);
   }
 
-  public function addTags(Post $post, ?string $tagsSubmmited)
+  public function addTags(Post $post, ?string $tagsSubmited)
   {
-    if ($tagsSubmmited) {
-      $tags = array_map('trim', explode(',', $tagsSubmmited));
+    if ($tagsSubmited) {
+      $tags = array_map('trim', explode(',', $tagsSubmited));
 
       foreach ($tags as $tag) {
         $this->tag($post, $tag);

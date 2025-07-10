@@ -61,6 +61,7 @@
       {{ $activities->appends(['tab' => 'overview'])->links() }}
     </div>
   </x-ui.panel>
+
   <x-ui.panel>
     @php
       $maxCount = $popularCategories->max('posts_count');
@@ -75,12 +76,12 @@
 
         <li>
           <div class="flex justify-between text-sm mb-1">
-            <span>{{ $category->name }}</span>
+            <h2 class="font-bold text-gray-900">{{ $category->name }}</h2>
             <span class="text-gray-500">{{ $category->posts_count }} posts</span>
           </div>
 
-          <div class="w-full bg-gray-200 rounded h-2">
-            <div class="bg-blue-600 h-2 rounded" style="width: {{ $percentage }}%"></div>
+          <div class="w-full bg-gray-200 rounded h-3">
+            <div class="bg-blue-600 h-3 rounded" style="width: {{ $percentage }}%"></div>
           </div>
         </li>
       @endforeach

@@ -16,9 +16,11 @@ class BlogController extends Controller
     $mostReadPosts = Post::orderBy('views', 'DESC')
       ->take(4)
       ->get();
+
+    $mostReadPostsThisWeek = Post::mostViewedThisWeek()->get();
       
     $tags = Tag::all();
 
-    return view('home.index', compact('recentPosts', 'mostReadPosts', 'tags'));
+    return view('home.index', compact('recentPosts', 'mostReadPosts', 'mostReadPostsThisWeek', 'tags'));
   }
 }
